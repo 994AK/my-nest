@@ -1,20 +1,21 @@
 import { Controller, Get, Param, Post, Req } from '@nestjs/common';
 import { Request } from 'express';
 
-@Controller()
-export class AppController {
+@Controller('/_user')
+export class UserController {
+  // 查询用户
   @Get()
   getUser() {
-    return { name: '994AK', email: '1505398065@qq.com' };
+    return { name: '994AK' };
   }
 
+  // 添加用户信息
   @Post()
   postUser(@Req() req: Request) {
-    // req.body 代表 传进来的参数
-    console.log(req.body);
     return req.body;
   }
 
+  // 查询帖子信息
   @Get('/:userId')
   getUserParam(@Param() param: { userId: number }) {
     return param;
